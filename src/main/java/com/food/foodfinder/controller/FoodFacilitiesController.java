@@ -36,18 +36,19 @@ public class FoodFacilitiesController {
 	@Qualifier("foodFacilitiesRepo")
 	private FoodFacilitiesRepositoryCustom repository;
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/search") //, produces = {MediaType.APPLICATION_JSON_VALUE})
+		
+	@RequestMapping(method = RequestMethod.GET, value = "/search/{applicant}")
 	@ResponseStatus(value = HttpStatus.OK)
-	public ModelAndView getFoodFacilities()
+	public ModelAndView getApplicant(@PathVariable String applicant)
 	{
-		return new ModelAndView("home", "foodFacilities", repository.getAll());
+		return new ModelAndView("home", "foodFacilities", repository.findByApplicant(applicant));
 	}
 		
-	@RequestMapping(method = RequestMethod.GET, value = "/search/{latitude}/{longitude}/{maxdistance}") //, produces = {MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(method = RequestMethod.GET, value = "/search/{latitude}/{longitude}/{maxdistance}")
 	@ResponseStatus(value = HttpStatus.OK)
-	public ModelAndView getFoodFacilities(@PathVariable double latitude, @PathVariable double longitude, @PathVariable double maxDistance)
+	public ModelAndView getFoodFacilities(@PathVariable double latitude, @PathVariable double longitude, @PathVariable double maxdistance)
 	{
-		return new ModelAndView("home", "foodFacilities", repository.findByLocation(latitude, longitude, maxDistance));
+		return new ModelAndView("home", "foodFacilities", repository.findByLocation(latitude, longitude, maxdistance));
 	}
 	
 	@ExceptionHandler(IllegalArgumentException.class)
@@ -55,32 +56,4 @@ public class FoodFacilitiesController {
  
 		return new ResponseEntity<String>(ex.getMessage(), HttpStatus.BAD_REQUEST);
 	}
-	
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	/*@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		//logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
-	}
-	
-	@RequestMapping(method = RequestMethod.GET, value = "/locationId/{locationId}") //, produces = {MediaType.APPLICATION_JSON_VALUE})
-	@ResponseStatus(value = HttpStatus.OK)
-	public ModelAndView getFoodFacilities(@PathVariable long locationId)
-	{
-		FoodFacilities temp = repository.findByLocationId(locationId);
-		return new ModelAndView("home", "foodFacilities", repository.findByLocationId(locationId));
-	}
-
-	*/
 }

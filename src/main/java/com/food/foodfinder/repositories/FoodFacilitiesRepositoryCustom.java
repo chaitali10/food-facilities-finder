@@ -9,6 +9,6 @@ import com.food.foodfinder.model.FoodFacilities;
 
 @Repository
 public interface FoodFacilitiesRepositoryCustom {
-	List<FoodFacilities> getAll();
+	List<FoodFacilities> findByApplicant(String applicant);
 	List<FoodFacilities> findByLocation(double lattitude, double longitude, double maxDistance);
 }

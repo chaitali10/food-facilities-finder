@@ -29,16 +29,14 @@ public class FoodFacilitiesRepositoryIml implements FoodFacilitiesRepositoryCust
 		this.mongoOps = mongoOps;
 	}
 	
-	public List<FoodFacilities> getAll() {
-		return mongoOps.findAll(FoodFacilities.class);
+	public List<FoodFacilities> findByApplicant(String applicant) {
+		Criteria criteria = new Criteria().where("applicant").is(applicant);
+		return mongoOps.find(Query.query(criteria), FoodFacilities.class);
 	}
 	
-	public List<FoodFacilities> findByLocation(double lattitude, double longitude, double maxDistance) {
+	public List<FoodFacilities> findByLocation(double lattitude, double longitude, double maxdistance) {
 		
-		Criteria criteria = new Criteria().near(new Point(lattitude, longitude)).maxDistance(maxDistance);
+		Criteria criteria = new Criteria().near(new Point(lattitude, longitude)).maxDistance(maxdistance);
 		return mongoOps.find(new Query(criteria), FoodFacilities.class);
 	}
-	
-	/*public FoodFacilities findByLocationId(long locationId) {
-		return mongoOps.findOne(query(Criteria.where("locationid").is(locationId)), FoodFacilities.class);	}*/
 }

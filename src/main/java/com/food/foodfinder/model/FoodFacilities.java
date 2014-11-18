@@ -6,40 +6,74 @@ import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection="sf")
 public class FoodFacilities {
 	
-	//@Id
-	private long locationid;
+	@Field("locationid")
+	private long locationId;
+	
+	@Field("Applicant")
 	private String applicant;
+	
+	@Field("FacilityType")
 	private String facilityType;
-	private long cnn;
+	
+	private Long cnn;
+	
+	@Field("LocationDescription")
 	private String locationDescription;
+	
+	@Field("Address")
 	private String address;
 	private String blockLot;
-	private long block;
+	private String block;
 	private String lot;
 	private String permit;
+	
+	@Field("Status")
 	private String status;
+	
+	@Field("FoodItems")
 	private String foodItems;
-	private long x;
-	private long y;
+	
+	@Field("X")
+	private Long x;
+	
+	@Field("Y")
+	private Long y;
+	
+	@Field("Latitude")
 	private BigDecimal latitude;
+	
+	@Field("Longitude")
 	private BigDecimal longitude;
+	
+	@Field("Schedule")
 	private String schedule;
-	private Date noiSent;
-	private Date approved;
-	private Date received;
+	
+	@Field("NOISent")
+	private String noiSent;
+	
+	@Field("Approved")
+	private String approved;
+	
+	@Field("Received")
+	private String received;
+	
+	@Field("PriorPermit")
 	private boolean priorPermit;
-	private Date expirationDate;
+	
+	@Field("ExpirationDate")
+	private String expirationDate;
 	//private List<Position> location;
 	
 	public long getLocationid() {
-		return locationid;
+		return locationId;
 	}
 	public void setLocationid(long locationid) {
-		this.locationid = locationid;
+		this.locationId = locationid;
 	}
 	public String getApplicant() {
 		return applicant;
@@ -53,10 +87,10 @@ public class FoodFacilities {
 	public void setFacilityType(String facilityType) {
 		this.facilityType = facilityType;
 	}
-	public long getCnn() {
+	public Long getCnn() {
 		return cnn;
 	}
-	public void setCnn(long cnn) {
+	public void setCnn(Long cnn) {
 		this.cnn = cnn;
 	}
 	public String getLocationDescription() {
@@ -77,10 +111,10 @@ public class FoodFacilities {
 	public void setBlockLot(String blockLot) {
 		this.blockLot = blockLot;
 	}
-	public long getBlock() {
+	public String getBlock() {
 		return block;
 	}
-	public void setBlock(long block) {
+	public void setBlock(String block) {
 		this.block = block;
 	}
 	public String getLot() {
@@ -107,16 +141,16 @@ public class FoodFacilities {
 	public void setFoodItems(String foodItems) {
 		this.foodItems = foodItems;
 	}
-	public long getX() {
+	public Long getX() {
 		return x;
 	}
-	public void setX(long x) {
+	public void setX(Long x) {
 		this.x = x;
 	}
-	public long getY() {
+	public Long getY() {
 		return y;
 	}
-	public void setY(long y) {
+	public void setY(Long y) {
 		this.y = y;
 	}
 	public BigDecimal getLatitude() {
@@ -137,22 +171,22 @@ public class FoodFacilities {
 	public void setSchedule(String schedule) {
 		this.schedule = schedule;
 	}
-	public Date getNoiSent() {
+	public String getNoiSent() {
 		return noiSent;
 	}
-	public void setNoiSent(Date noiSent) {
+	public void setNoiSent(String noiSent) {
 		this.noiSent = noiSent;
 	}
-	public Date getApproved() {
+	public String getApproved() {
 		return approved;
 	}
-	public void setApproved(Date approved) {
+	public void setApproved(String approved) {
 		this.approved = approved;
 	}
-	public Date getReceived() {
+	public String getReceived() {
 		return received;
 	}
-	public void setReceived(Date received) {
+	public void setReceived(String received) {
 		this.received = received;
 	}
 	public boolean isPriorPermit() {
@@ -161,10 +195,10 @@ public class FoodFacilities {
 	public void setPriorPermit(boolean priorPermit) {
 		this.priorPermit = priorPermit;
 	}
-	public Date getExpirationDate() {
+	public String getExpirationDate() {
 		return expirationDate;
 	}
-	public void setExpirationDate(Date expirationDate) {
+	public void setExpirationDate(String expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 	/*public List<Position> getLocation() {
