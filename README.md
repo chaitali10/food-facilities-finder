@@ -12,3 +12,5 @@ The decision of using MongoDB was well thought. An application such as the "Food
 
 1. Display food facilities based on their schedule.
 2. Ability to search based on the food items a user wants to eat.
+
+If I would have developed the UI, I would have done it using angular js and twitter bootstrap.
